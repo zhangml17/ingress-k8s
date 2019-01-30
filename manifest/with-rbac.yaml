@@ -21,10 +21,11 @@ spec:
         prometheus.io/port: "10254"
         prometheus.io/scrape: "true"
     spec:
+      hostNetwork: true
       serviceAccountName: nginx-ingress-serviceaccount
       containers:
         - name: nginx-ingress-controller
-          image: quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.22.0
+          image: quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.14.0
           args:
             - /nginx-ingress-controller
             - --configmap=$(POD_NAMESPACE)/nginx-configuration
